@@ -23,6 +23,7 @@ export default class SparklinesSpots extends React.Component {
         const { data, points, width, height, size, style, spotColors } = this.props;
 
         const {minIndex, maxIndex} = this.getIndex(data)
+        console.log("Is this thing on??")
         const maxSpot = <circle
                             cx={points[maxIndex].x}
                             cy={points[maxIndex].y}
