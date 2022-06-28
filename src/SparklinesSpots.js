@@ -38,7 +38,7 @@ export default class SparklinesSpots extends React.Component {
 
         return (
             <g>
-                {style && maxSpot}
+                {maxSpot}
                 {minSpot}
             </g>
         )
