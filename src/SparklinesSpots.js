@@ -6,15 +6,10 @@ export default class SparklinesSpots extends React.Component {
     static propTypes = {
         size: PropTypes.number,
         style: PropTypes.object,
-        spotColors: PropTypes.object
     };
 
     static defaultProps = {
         size: 2,
-        spotColors: {
-            'max': 'green',
-            'min': 'red'
-        }
     };
 
     getIndex(data) {
@@ -32,17 +27,17 @@ export default class SparklinesSpots extends React.Component {
                             cx={points[maxIndex].x}
                             cy={points[maxIndex].y}
                             r={size}
-                            style={{fill: spotColors['max']}} />
+                            style={{fill: 'green'}} />
 
         const minSpot = <circle
                             cx={points[minIndex].x}
                             cy={points[minIndex].y}
                             r={size}
-                            style={{fill: spotColors['min']}} />
+                            style={{fill: 'red'}} />
 
         return (
             <g>
-                {style && maxSpot}
+                {maxSpot}
                 {minSpot}
             </g>
         )
