@@ -2224,6 +2224,7 @@ var SparklinesSpotsMinMax = function (_React$Component) {
                 minIndex = _getIndex.minIndex,
                 maxIndex = _getIndex.maxIndex;
 
+            console.log("Hello?");
             var maxSpot = _react2.default.createElement('circle', {
                 cx: points[maxIndex].x,
                 cy: points[maxIndex].y,
