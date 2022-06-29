@@ -9,7 +9,7 @@ export default class SparklinesSpotsMinMax extends React.Component {
     };
 
     static defaultProps = {
-        size: 2,
+        size: 2
     };
 
     getIndex(data) {
