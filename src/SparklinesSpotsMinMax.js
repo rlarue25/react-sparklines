@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-export default class SparklinesSpots extends React.Component {
+export default class SparklinesSpotsMinMax extends React.Component {
 
     static propTypes = {
         size: PropTypes.number,
