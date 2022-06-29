@@ -20,20 +20,20 @@ export default class SparklinesSpotsMinMax extends React.Component {
 
     render() {
 
-        const { data, points, width, height, size, style, spotColors } = this.props;
+        const { data, points, width, height, size, style} = this.props;
 
         const {minIndex, maxIndex} = this.getIndex(data)
         const maxSpot = <circle
                             cx={points[maxIndex].x}
                             cy={points[maxIndex].y}
                             r={size}
-                            style={{fill: 'green'}} />
+                            style={style || {fill: 'green'}} />
 
         const minSpot = <circle
                             cx={points[minIndex].x}
                             cy={points[minIndex].y}
                             r={size}
-                            style={{fill: 'red'}} />
+                            style={style || {fill: 'red'}} />
 
         return (
             <g>
