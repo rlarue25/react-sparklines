@@ -643,13 +643,13 @@ var _SparklinesNormalBand = __webpack_require__(27);
 
 var _SparklinesNormalBand2 = _interopRequireDefault(_SparklinesNormalBand);
 
-var _dataToPoints = __webpack_require__(28);
-
-var _dataToPoints2 = _interopRequireDefault(_dataToPoints);
-
-var _SparklinesSpotsMinMax = __webpack_require__(29);
+var _SparklinesSpotsMinMax = __webpack_require__(28);
 
 var _SparklinesSpotsMinMax2 = _interopRequireDefault(_SparklinesSpotsMinMax);
+
+var _dataToPoints = __webpack_require__(29);
+
+var _dataToPoints2 = _interopRequireDefault(_dataToPoints);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2175,59 +2175,6 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _min = __webpack_require__(7);
-
-var _min2 = _interopRequireDefault(_min);
-
-var _max = __webpack_require__(9);
-
-var _max2 = _interopRequireDefault(_max);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = function (_ref) {
-    var data = _ref.data,
-        limit = _ref.limit,
-        _ref$width = _ref.width,
-        width = _ref$width === undefined ? 1 : _ref$width,
-        _ref$height = _ref.height,
-        height = _ref$height === undefined ? 1 : _ref$height,
-        _ref$margin = _ref.margin,
-        margin = _ref$margin === undefined ? 0 : _ref$margin,
-        _ref$max = _ref.max,
-        max = _ref$max === undefined ? (0, _max2.default)(data) : _ref$max,
-        _ref$min = _ref.min,
-        min = _ref$min === undefined ? (0, _min2.default)(data) : _ref$min;
-
-
-    var len = data.length;
-
-    if (limit && limit < len) {
-        data = data.slice(len - limit);
-    }
-
-    var vfactor = (height - margin * 2) / (max - min || 2);
-    var hfactor = (width - margin * 2) / ((limit || len) - (len > 1 ? 1 : 0));
-
-    return data.map(function (d, i) {
-        return {
-            x: i * hfactor + margin,
-            y: (max === min ? 1 : max - d) * vfactor + margin
-        };
-    });
-};
-
-/***/ }),
-/* 29 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _propTypes = __webpack_require__(0);
@@ -2309,6 +2256,59 @@ SparklinesSpotsMinMax.defaultProps = {
     size: 2
 };
 exports.default = SparklinesSpotsMinMax;
+
+/***/ }),
+/* 29 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _min = __webpack_require__(7);
+
+var _min2 = _interopRequireDefault(_min);
+
+var _max = __webpack_require__(9);
+
+var _max2 = _interopRequireDefault(_max);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function (_ref) {
+    var data = _ref.data,
+        limit = _ref.limit,
+        _ref$width = _ref.width,
+        width = _ref$width === undefined ? 1 : _ref$width,
+        _ref$height = _ref.height,
+        height = _ref$height === undefined ? 1 : _ref$height,
+        _ref$margin = _ref.margin,
+        margin = _ref$margin === undefined ? 0 : _ref$margin,
+        _ref$max = _ref.max,
+        max = _ref$max === undefined ? (0, _max2.default)(data) : _ref$max,
+        _ref$min = _ref.min,
+        min = _ref$min === undefined ? (0, _min2.default)(data) : _ref$min;
+
+
+    var len = data.length;
+
+    if (limit && limit < len) {
+        data = data.slice(len - limit);
+    }
+
+    var vfactor = (height - margin * 2) / (max - min || 2);
+    var hfactor = (width - margin * 2) / ((limit || len) - (len > 1 ? 1 : 0));
+
+    return data.map(function (d, i) {
+        return {
+            x: i * hfactor + margin,
+            y: (max === min ? 1 : max - d) * vfactor + margin
+        };
+    });
+};
 
 /***/ })
 /******/ ]);
