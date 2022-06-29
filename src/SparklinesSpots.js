@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import min from './dataProcessing/min';
 
 export default class SparklinesSpots extends React.Component {
 
@@ -27,19 +28,25 @@ export default class SparklinesSpots extends React.Component {
             : Math.sign(points[points.length - 2].y - points[points.length - 1].y);
     }
 
+    getIndex(data) {
+        const minIndex = data.indexOf(Math.min.apply(Math, data))
+        const maxIndex = data.indexOf(Math.max.apply(Math, data))
+        return {minIndex, maxIndex}
+    }
+
     render() {
 
         const { points, width, height, size, style, spotColors } = this.props;
-
+        const {minIndex, maxIndex} = this.getIndex(data)
         const startSpot = <circle
-                            cx={points[0].x}
-                            cy={points[0].y}
+                            cx={points[minIndex].x}
+                            cy={points[minIndex].y}
                             r={size}
                             style={style} />
 
         const endSpot = <circle
-                            cx={points[points.length - 1].x}
-                            cy={points[points.length - 1].y}
+                            cx={points[maxIndex].x}
+                            cy={points[maxIndex].y}
                             r={size}
                             style={style || { fill: spotColors[this.lastDirection(points)] }} />
 

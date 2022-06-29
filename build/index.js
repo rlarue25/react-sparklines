@@ -318,13 +318,28 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 exports.default = function (data) {
+    return Math.min.apply(Math, data);
+};
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+exports.default = function (data) {
     return data.reduce(function (a, b) {
         return a + b;
     }) / data.length;
 };
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -368,7 +383,7 @@ emptyFunction.thatReturnsArgument = function (arg) {
 module.exports = emptyFunction;
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -430,7 +445,7 @@ module.exports = invariant;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -451,21 +466,6 @@ module.exports = ReactPropTypesSecret;
 
 
 /***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-exports.default = function (data) {
-    return Math.min.apply(Math, data);
-};
-
-/***/ }),
 /* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -482,7 +482,7 @@ exports.default = function (data) {
 
 
 
-var emptyFunction = __webpack_require__(4);
+var emptyFunction = __webpack_require__(5);
 
 /**
  * Similar to invariant but only logs a warning if the condition is not met.
@@ -562,7 +562,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _mean = __webpack_require__(3);
+var _mean = __webpack_require__(4);
 
 var _mean2 = _interopRequireDefault(_mean);
 
@@ -754,11 +754,11 @@ exports.SparklinesSpotsMinMax = _SparklinesSpotsMinMax2.default;
 
 
 
-var emptyFunction = __webpack_require__(4);
-var invariant = __webpack_require__(5);
+var emptyFunction = __webpack_require__(5);
+var invariant = __webpack_require__(6);
 var warning = __webpack_require__(8);
 
-var ReactPropTypesSecret = __webpack_require__(6);
+var ReactPropTypesSecret = __webpack_require__(7);
 var checkPropTypes = __webpack_require__(15);
 
 module.exports = function(isValidElement, throwOnDirectAccess) {
@@ -1275,9 +1275,9 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 
 
 if (process.env.NODE_ENV !== 'production') {
-  var invariant = __webpack_require__(5);
+  var invariant = __webpack_require__(6);
   var warning = __webpack_require__(8);
-  var ReactPropTypesSecret = __webpack_require__(6);
+  var ReactPropTypesSecret = __webpack_require__(7);
   var loggedTypeFailures = {};
 }
 
@@ -1343,9 +1343,9 @@ module.exports = checkPropTypes;
 
 
 
-var emptyFunction = __webpack_require__(4);
-var invariant = __webpack_require__(5);
-var ReactPropTypesSecret = __webpack_require__(6);
+var emptyFunction = __webpack_require__(5);
+var invariant = __webpack_require__(6);
+var ReactPropTypesSecret = __webpack_require__(7);
 
 module.exports = function() {
   function shim(props, propName, componentName, location, propFullName, secret) {
@@ -1813,6 +1813,10 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _min = __webpack_require__(3);
+
+var _min2 = _interopRequireDefault(_min);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1841,6 +1845,13 @@ var SparklinesSpots = function (_React$Component) {
             return points.length < 2 ? 0 : Math.sign(points[points.length - 2].y - points[points.length - 1].y);
         }
     }, {
+        key: 'getIndex',
+        value: function getIndex(data) {
+            var minIndex = data.indexOf(Math.min.apply(Math, data));
+            var maxIndex = data.indexOf(Math.max.apply(Math, data));
+            return { minIndex: minIndex, maxIndex: maxIndex };
+        }
+    }, {
         key: 'render',
         value: function render() {
             var _props = this.props,
@@ -1851,16 +1862,19 @@ var SparklinesSpots = function (_React$Component) {
                 style = _props.style,
                 spotColors = _props.spotColors;
 
+            var _getIndex = this.getIndex(data),
+                minIndex = _getIndex.minIndex,
+                maxIndex = _getIndex.maxIndex;
 
             var startSpot = _react2.default.createElement('circle', {
-                cx: points[0].x,
-                cy: points[0].y,
+                cx: points[minIndex].x,
+                cy: points[minIndex].y,
                 r: size,
                 style: style });
 
             var endSpot = _react2.default.createElement('circle', {
-                cx: points[points.length - 1].x,
-                cy: points[points.length - 1].y,
+                cx: points[maxIndex].x,
+                cy: points[maxIndex].y,
                 r: size,
                 style: style || { fill: spotColors[this.lastDirection(points)] } });
 
@@ -1984,11 +1998,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.variance = exports.stdev = exports.median = exports.midRange = exports.avg = exports.mean = exports.max = exports.min = undefined;
 
-var _min2 = __webpack_require__(7);
+var _min2 = __webpack_require__(3);
 
 var _min3 = _interopRequireDefault(_min2);
 
-var _mean2 = __webpack_require__(3);
+var _mean2 = __webpack_require__(4);
 
 var _mean3 = _interopRequireDefault(_mean2);
 
@@ -2030,7 +2044,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _min = __webpack_require__(7);
+var _min = __webpack_require__(3);
 
 var _min2 = _interopRequireDefault(_min);
 
@@ -2072,7 +2086,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _mean = __webpack_require__(3);
+var _mean = __webpack_require__(4);
 
 var _mean2 = _interopRequireDefault(_mean);
 
@@ -2107,7 +2121,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _mean = __webpack_require__(3);
+var _mean = __webpack_require__(4);
 
 var _mean2 = _interopRequireDefault(_mean);
 
@@ -2269,7 +2283,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _min = __webpack_require__(7);
+var _min = __webpack_require__(3);
 
 var _min2 = _interopRequireDefault(_min);
 
