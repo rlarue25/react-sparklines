@@ -2292,7 +2292,7 @@ var SparklinesSpotsMinMax = function (_React$Component) {
             return _react2.default.createElement(
                 'g',
                 null,
-                maxSpot,
+                style && maxSpot,
                 minSpot
             );
         }
