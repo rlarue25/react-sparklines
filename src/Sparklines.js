@@ -7,8 +7,9 @@ import SparklinesBars from './SparklinesBars';
 import SparklinesSpots from './SparklinesSpots';
 import SparklinesReferenceLine from './SparklinesReferenceLine';
 import SparklinesNormalBand from './SparklinesNormalBand';
-import dataToPoints from './dataProcessing/dataToPoints';
 import SparklinesSpotsMinMax from './SparklinesSpotsMinMax';
+import dataToPoints from './dataProcessing/dataToPoints';
+
 
 class Sparklines extends PureComponent {
 
