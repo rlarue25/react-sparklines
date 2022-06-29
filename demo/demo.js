@@ -81,17 +81,40 @@ const Bounds1 = () =>
         <SparklinesLine />
     </Sparklines>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const Spots1 = () =>
     <Sparklines data={sampleData}>
         <SparklinesLine style={{ fill: "none" }} />
         {/* <SparklinesSpots /> */}
         <SparklinesSpotsMinMax />
     </Sparklines>
-
+    
 const Spots2 = () =>
     <Sparklines data={sampleData}>
         <SparklinesLine color="#56b45d" />
-        <SparklinesSpots style={{ fill: "#56b45d" }} />
+        {/* <SparklinesSpots style={{ fill: "#56b45d" }} /> */}
+        <SparklinesSpotsMinMax />
     </Sparklines>
 
 const Spots3 = () =>
@@ -100,6 +123,18 @@ const Spots3 = () =>
         {/* <SparklinesSpots size={4} style={{ stroke: "#336aff", strokeWidth: 3, fill: "white" }} /> */}
         <SparklinesSpotsMinMax />
     </Sparklines>
+
+
+
+
+
+
+
+
+
+
+
+
 
 const Bars1 = () =>
     <Sparklines data={sampleData}>
